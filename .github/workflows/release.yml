@@ -1,7 +1,7 @@
 name: deploy
 
 on:
-  deployment
+  push
 
 jobs:
   build:
