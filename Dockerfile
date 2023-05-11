@@ -15,4 +15,4 @@ RUN dotnet publish -c Release -o /app
 FROM mcr.microsoft.com/dotnet/aspnet:7.0
 WORKDIR /app
 COPY --from=build /app .
-ENTRYPOINT [“dotnet”, dotnet-app.dll”]
+ENTRYPOINT ["dotnet", "dotnet-app.dll"]
