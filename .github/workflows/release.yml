@@ -39,6 +39,7 @@ jobs:
         shell: bash
         run: |
           docker tag dk-sample-backend:latest 400869475597.dkr.ecr.us-east-1.amazonaws.com/dk-sample-backend:latest
+          docker push 400869475597.dkr.ecr.us-east-1.amazonaws.com/dk-sample-backend:latest
 
       - name: Cleanup the containers
         shell: bash
