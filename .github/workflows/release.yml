@@ -61,7 +61,7 @@ jobs:
   deploy:
     needs: build
     name: Deploy
-    runs-on: ${{ github.event.deployment.environment }}
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
