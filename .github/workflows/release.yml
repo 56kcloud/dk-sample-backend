@@ -38,11 +38,7 @@ jobs:
       - name: Push the Docker container
         shell: bash
         run: |
-          export GIT_TAG=$(echo $GITHUB_SHA | head -c 7)
-          docker tag dk-sample-backend:latest 400869475597.dkr.ecr.us-east-1.amazonaws.com/dk-sample-backend:$GIT_TAG
-          docker tag dk-sample-backend:latest 400869475597.dkr.ecr.us-east-1.amazonaws.com/dk-sample-backend:$TARGET_ENV
-          docker push 400869475597.dkr.ecr.us-east-1.amazonaws.com/dk-sample-backend:$GIT_TAG
-          docker push 400869475597.dkr.ecr.us-east-1.amazonaws.com/dk-sample-backend:$TARGET_ENV
+          docker tag dk-sample-backend:latest 400869475597.dkr.ecr.us-east-1.amazonaws.com/dk-sample-backend:latest
 
       - name: Cleanup the containers
         shell: bash
