@@ -33,7 +33,7 @@ jobs:
 
       - name: AWS ECR Log In
         run: |
-          aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 400869475597.dkr.ecr.us-east-1.amazonaws.com
+          aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 400869475597.dkr.ecr.us-east-1.amazonaws.com/dk-sample-backend
 
       - name: Push the Docker container
         shell: bash
@@ -49,6 +49,7 @@ jobs:
         run: |
           export GIT_TAG=$(echo $GITHUB_SHA | head -c 7)
           docker rmi -f dk-sample-backend:latest 400869475597.dkr.ecr.us-east-1.amazonaws.com/dk-sample-backend:$TARGET_ENV 400869475597.dkr.ecr.us-east-1.amazonaws.com/dk-sample-backend:$GIT_TAG
+
 
       # - name: Update deployment status (failure)
       #   if: failure()
