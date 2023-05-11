@@ -56,6 +56,8 @@ jobs:
       #     state: "failure"
       #     deployment_id: ${{ github.event.deployment.id }}
 
+    
+
   deploy:
     needs: build
     name: Deploy
@@ -66,7 +68,7 @@ jobs:
 
       - name: Trigger ECS deployment
         run: |
-          aws --region us-east-1 ecs update-service --cluster dk-sample-$TARGET_ENV --service dk-sample-backend-$TARGET_ENV --force-new-deployment
+          aws --region us-east-1 ecs update-service --cluster dk-sample-backend --service dk-sample-backend --force-new-deployment
 
       # - name: Update deployment status (success)
       #   if: success()
