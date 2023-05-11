@@ -6,7 +6,7 @@ on:
 jobs:
   build:
     name: Build
-    runs-on: ${{ github.event.deployment.environment }}
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
