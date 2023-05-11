@@ -33,7 +33,7 @@ jobs:
 
       - name: AWS ECR Log In
         run: |
-          $(aws ecr get-login --registry-ids 400869475597 --no-include-email --region us-east-1)
+          aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 400869475597.dkr.ecr.us-east-1.amazonaws.com
 
       - name: Push the Docker container
         shell: bash
