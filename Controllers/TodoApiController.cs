@@ -33,5 +33,11 @@ namespace TodoApi.Controllers
             var items = await _context.ScanAsync<TodoDynamo>(default).GetRemainingAsync();
             return Ok(items);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetHealth()
+        {
+            return Ok();
+        }
     }
 }
