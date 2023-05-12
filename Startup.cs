@@ -18,7 +18,6 @@ namespace TodoApi
         {
             services.AddAutoMapper(typeof(Startup));
 
-            // TODO Remove localhost
             AmazonDynamoDBConfig clientConfig = new AmazonDynamoDBConfig();
             clientConfig.RegionEndpoint = RegionEndpoint.USEast1;
             AmazonDynamoDBClient client = new AmazonDynamoDBClient(clientConfig);
