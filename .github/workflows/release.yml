@@ -26,35 +26,35 @@ jobs:
 
       - name: AWS ECR Log In
         run: |
-          aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 400869475597.dkr.ecr.us-east-1.amazonaws.com/dk-sample-backend
+          aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 400869475597.dkr.ecr.us-east-1.amazonaws.com/demo-1-prod
 
       - name: Push the Docker container
         shell: bash
         run: |
-          docker tag dk-sample-backend:latest 400869475597.dkr.ecr.us-east-1.amazonaws.com/dk-sample-backend:latest
-          docker push 400869475597.dkr.ecr.us-east-1.amazonaws.com/dk-sample-backend:latest
+          docker tag dk-sample-backend:latest 400869475597.dkr.ecr.us-east-1.amazonaws.com/demo-1-prod:latest
+          docker push 400869475597.dkr.ecr.us-east-1.amazonaws.com/demo-1-prod:latest
 
       - name: Cleanup the containers
         shell: bash
         run: |
           export GIT_TAG=$(echo $GITHUB_SHA | head -c 7)
-          docker rmi -f 400869475597.dkr.ecr.us-east-1.amazonaws.com/dk-sample-backend:latest
+          docker rmi -f 400869475597.dkr.ecr.us-east-1.amazonaws.com/demo-1-prod:latest
 
-  deploy:
-    needs: build
-    name: Deploy
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout the repository
-        uses: actions/checkout@v2
+  # deploy:
+  #   needs: build
+  #   name: Deploy
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout the repository
+  #       uses: actions/checkout@v2
 
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
+  #     - name: Configure AWS credentials
+  #       uses: aws-actions/configure-aws-credentials@v1
+  #       with:
+  #         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  #         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  #         aws-region: us-east-1
 
-      - name: Trigger ECS deployment
-        run: |
-          aws --region us-east-1 ecs update-service --cluster dk-sample-backend --service dk-sample-backend --force-new-deploymentx
+  #     - name: Trigger ECS deployment
+  #       run: |
+  #         aws --region us-east-1 ecs update-service --cluster dk-sample-backend --service dk-sample-backend --force-new-deploymentx

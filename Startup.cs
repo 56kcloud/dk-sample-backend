@@ -21,7 +21,6 @@ namespace TodoApi
             // TODO Remove localhost
             AmazonDynamoDBConfig clientConfig = new AmazonDynamoDBConfig();
             clientConfig.RegionEndpoint = RegionEndpoint.USEast1;
-            clientConfig.ServiceURL = "http://localhost:8000";
             AmazonDynamoDBClient client = new AmazonDynamoDBClient(clientConfig);
             DynamoDBContext context = new DynamoDBContext(client);
 
