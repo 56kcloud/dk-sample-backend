@@ -15,5 +15,4 @@ RUN dotnet publish -c Release -o /app
 FROM mcr.microsoft.com/dotnet/aspnet:7.0
 WORKDIR /app
 COPY --from=build /app .
-EXPOSE 8000
 ENTRYPOINT ["dotnet", "TodoApi.dll"]
