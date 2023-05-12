@@ -1,5 +1,5 @@
 using Amazon.DynamoDBv2.DataModel;
- 
+
 namespace TodoApi.Models
 {
     [DynamoDBTable("Todo")]

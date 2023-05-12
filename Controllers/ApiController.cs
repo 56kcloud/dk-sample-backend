@@ -20,7 +20,7 @@ namespace TodoApi.Controllers
 
         [HttpPost]
         public async Task<IActionResult> PostTodoItem(TodoItem todoItem)
-        {   
+        {
             var todoItemDynamo = _mapper.Map<TodoDynamo>(todoItem);
             await _context.SaveAsync(todoItemDynamo);
 
@@ -29,7 +29,7 @@ namespace TodoApi.Controllers
 
         [HttpGet]
         public async Task<IActionResult> GetTodoItems()
-        {   
+        {
             var items = await _context.ScanAsync<TodoDynamo>(default).GetRemainingAsync();
             return Ok(items);
         }
